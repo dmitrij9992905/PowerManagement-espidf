@@ -1,3 +1,8 @@
+# 1.0.2601.173
+## Changed
+- Bumped version
+- Added github action to publish to IDF components registry
+
 # 1.0.2601.172
 ## Added
 - Added "Power on" request that useful for devices powered from mains but has a backup-battery

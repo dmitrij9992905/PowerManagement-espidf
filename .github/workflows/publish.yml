@@ -1,0 +1,19 @@
+name: Publish ESP-IDF component
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Publish component to ESP-IDF registry
+        uses: espressif/esp-idf-component-action@v1
+        with:
+          api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}
