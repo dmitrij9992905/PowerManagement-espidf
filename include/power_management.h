@@ -232,6 +232,13 @@ void power_management_trigger_shutdown();
  */
 void power_management_trigger_reboot();
 
+/**
+ * @brief Powers on device
+ * Please note that this call will work only from OFF_CHARGE state.
+ * Useful for devices that powered from mains but battery is used as a backup power source.
+ */
+void power_management_trigger_power_on();
+
 #ifdef __cplusplus
 }
 #endif

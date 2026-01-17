@@ -51,6 +51,8 @@ void on_shutdown() {
 
 void off_charger_setup() {
     // TODO: Действия при переходе Power management в PM_OFF_CHARGER
+    // Если Вы разрабатываете устройство, запитанное от сети, но с резервной батареей,
+    // используйте запрос power_management_trigger_power_on() для автоматического запуска после подачи питания
 }
 
 void off_charger_loop() {

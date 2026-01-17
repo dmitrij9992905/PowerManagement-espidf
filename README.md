@@ -55,6 +55,8 @@ void off_charger_setup() {
 
 void off_charger_loop() {
     // TODO: Actions to be performed periodically in PM_OFF_CHARGER state
+    // If you design the device powered from mains with backup-battery
+    // use the request power_management_trigger_power_on() for start-up the device once the mains power is applied
 }
 
 bool on_button_state() {

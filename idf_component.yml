@@ -1,0 +1,8 @@
+version: "1.0.2601~172"
+description: "PowerManagement library for ESP-IDF framework"
+url: "https://github.com/dmitrij9992905/PowerManagement-espidf"
+maintainer: "Dmitri Kuzmichev <dmitrij-96@mail.ru>"
+license: "MIT"
+dependencies:
+  idf:
+    version: ">=5.2"

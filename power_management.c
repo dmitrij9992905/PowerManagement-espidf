@@ -141,6 +141,14 @@ void power_management_init() {
     ESP_LOGI(TAG, "Power management has been started");
 }
 
+void power_management_trigger_power_on() {
+    power_management_send_request(
+                                    POWER_MANAGEMENT_REQUEST_TYPE_POWER_ON, 
+                                    0, 
+                                    POWER_MANAGEMENT_IDLE_TIMER_EXPIRED_ACTION_NOT
+                                );
+}
+
 void power_management_idle_reset_timer() {
     power_management_send_request(
                                     POWER_MANAGEMENT_REQUEST_TYPE_IDLE_TIMER_RESET, 
@@ -521,6 +529,16 @@ static void power_management_handle(void * params) {
                     case POWER_MANAGEMENT_REQUEST_TYPE_SHUTDOWN:
                         ESP_LOGD(TAG, "Shutdown requested");
                         pm_state = POWER_MANAGEMENT_STATE_SHUTDOWN_PREPARE;
+                        break;
+                    case POWER_MANAGEMENT_REQUEST_TYPE_POWER_ON:
+                        ESP_LOGD(TAG, "Power on request");
+                        if (pm_state == POWER_MANAGEMENT_STATE_OFF_CHARGER || pm_state == POWER_MANAGEMENT_STATE_INIT) {
+                            ESP_LOGI(TAG, "Power-on called, starting");
+                            pm_state = POWER_MANAGEMENT_STATE_SETUP;
+                        }
+                        else {
+                            ESP_LOGW(TAG, "Power-on is available only from PM_INIT or PM_OFF_CHARGE");
+                        }
                         break;
                     default:
                         break;
