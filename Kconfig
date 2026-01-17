@@ -1,0 +1,53 @@
+menu "Device power management config"
+
+    config POWER_MANAGEMENT_INIT_WAIT_FOR_BUTTON_ACTION_MS
+        int "Wait for button action in INIT state, ms"
+        default 3000
+        help
+            The time for INIT state if device is not woken up or charger is not detected.
+            Set this timer more than button long-press time at least in 2 times.
+
+    config POWER_MANAGEMENT_BUTTON_DEBOUNCE_TIME_MS
+        int "Time to debounce button state, ms"
+        default 50
+        help
+            The least debounce time after which the state will be considered
+
+    config POWER_MANAGEMENT_BUTTON_LONG_PRESS_TIME_MS
+        int "Button long-press time, ms"
+        default 1500
+        help
+            The time since button press after which the state will be considered as long-pressed
+
+    config POWER_MANAGEMENT_BUTTON_VERY_LONG_PRESS_TIME_MS
+        int "Button very-long-press time, ms"
+        default 7000
+        help
+            The time since button press after which the state will be considered as very-long-pressed.
+            For now, this state is handled as device rebooting.
+
+    config POWER_MANAGEMENT_IDLE_TIMEOUT_MS
+        int "Default timeout in IDLE state, ms"
+        default 30000
+        help
+            The default timeout in IDLE state
+
+    config POWER_MANAGEMENT_IDLE_TIMEOUT_MIN_MS
+        int "Minimal timeout in IDLE state, ms"
+        default 30000
+        help
+            The minimal timeout in IDLE state. The timeout cannot be set with timeout below this value.
+
+    config POWER_MANAGEMENT_REQUESTS_QUEUE_SIZE
+        int "Requests queue length"
+        default 10
+        help
+            The queue depth for requests to power management
+
+    config POWER_MANAGEMENT_EVENT_AND_ACTION_ON_SLEEP_SHUTDOWN_GAP_MS
+        int "Gap between event and sleep/shutdown action, ms"
+        default 3000
+        help
+            The gap between event sending and shutdown/sleep action in ms.
+
+endmenu
